@@ -1,3 +1,4 @@
+import './shop.css';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "../../components/Product/Product";
@@ -28,13 +29,17 @@ function Shop() {
     if (products.length === 0) return <p>Error getting products</p>
 
     const displayProducts = () => {
-        return products.map((product) => <Product key={product.id} {...product}/>);
+        return (
+            <div className="product-grid">
+                { products.map((product) => <Product key={product.id} title={product.title} price={product.price} image={product.image} />) }
+            </div>
+        )
     };
 
     return (
-        <div>
+        <>
             {displayProducts()}
-        </div>
+        </>
     );
 }
 
