@@ -1,9 +1,15 @@
 import './product.css';
+import { useNavigate } from 'react-router-dom';
 
-function Product({ title, price, image }) {
+function Product({ id, title, price, image }) {
+    const navigate = useNavigate();
+    
+    const handleClick = () => {
+        navigate("/product/" + id);
+    }
 
     return (
-        <div className="product">
+        <div className="product" onClick={handleClick}>
             <img className="image" src={image} alt={title}></img>
             <div className='group-title-price'>
                 <p className="product-title">{title}</p>

@@ -31,7 +31,7 @@ function Shop() {
     const displayProducts = () => {
         return (
             <div className="product-grid">
-                { products.map((product) => <Product key={product.id} title={product.title} price={product.price} image={product.image} />) }
+                { products.map((product) => <Product key={product.id} id={product.id} title={product.title} price={product.price} image={product.image} />) }
             </div>
         )
     };
