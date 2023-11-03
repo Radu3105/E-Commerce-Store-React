@@ -3,7 +3,7 @@ import Cart from "../Cart/Cart";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ cartItems }) {
     const [openDropdown, setOpenDropdown] = useState(false);
 
     const toggleDropdown = () => {
@@ -30,8 +30,8 @@ function Navbar() {
                         </div>
                     </Link>
                 </div>
-                <Link to="shopping-cart">
-                    <Cart />
+                <Link to="checkout">
+                    <Cart items={cartItems}/>
                 </Link>
                 <div className="mobile-menu-button" onClick={toggleDropdown}>
                     <i className="fa-solid fa-bars"></i>

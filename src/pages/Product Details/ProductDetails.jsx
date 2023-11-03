@@ -1,11 +1,12 @@
 import './productDetails.css';
 import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-function ProductDetails() {
-    let { id } = useParams();
-    
+function ProductDetails({ handleAddToCart }) {
+    const { id } = useParams();
+    const navigate = useNavigate(); 
+
     const [loading, setLoading] = useState(false);
     const [product, setProduct] = useState({});
 
@@ -15,7 +16,6 @@ function ProductDetails() {
                 setLoading(true);
                 const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
                 setProduct(response.data);
-
             } catch (error) {
                 console.error('An error ocurred:', error.message);
             } finally {
@@ -25,6 +25,11 @@ function ProductDetails() {
 
         fetchProduct();
     }, []);
+
+    const handleAddToCartClick = (product) => {
+        handleAddToCart(product);
+        navigate('/shop');
+    }
 
     if (loading) return <p>Loading...</p>
 
@@ -54,7 +59,7 @@ function ProductDetails() {
                         </div>
                     </div>
                     )}
-                    <button className='description-buy-btn'>BUY</button>
+                    <button className='description-buy-btn' onClick={() => handleAddToCartClick(product)}>Add To Cart</button>
                 </div>
             </div>
         </div>

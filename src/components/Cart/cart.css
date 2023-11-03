@@ -1,0 +1,29 @@
+.cart {
+    position: relative;
+}
+
+.cart-quantity {
+    position: absolute;
+    top: -20px;
+    left: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: red;
+}
+
+.cart-quantity p {
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .cart-quantity {
+        left: -35px;
+    }
+}
